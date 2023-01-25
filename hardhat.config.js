@@ -60,6 +60,28 @@ for (const f of fs.readdirSync(path.join(__dirname, 'hardhat'))) {
 
 const withOptimizations = argv.gas || argv.compileMode === 'production';
 
+require('dotenv').config();
+
+const { ethers } = require('ethers');
+const MNEMONIC = ethers.Wallet.createRandom().mnemonic;
+const derivationPath = "m/44'/60'/0'/0'";
+
+var nodeUrl;
+try {
+  const { initNode, sendFil } = require('../../kit');
+
+  const accounts = Array.from(Array(20).keys()).map(index => {
+    const wallet = ethers.Wallet.fromMnemonic(MNEMONIC, derivationPath + '/' + index);
+    return wallet.address;
+  });
+
+  nodeUrl = initNode(100);
+  sendFil(accounts, 100);
+} catch (e) {
+  console.log(e);
+  nodeUrl = '';
+}
+
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
@@ -85,6 +107,14 @@ module.exports = {
     hardhat: {
       blockGasLimit: 10000000,
       allowUnlimitedContractSize: !withOptimizations,
+    },
+    itest: {
+      url: nodeUrl + '/rpc/v0',
+      accounts: {
+        mnemonic: MNEMONIC,
+        initialIndex: 0,
+        path: derivationPath,
+      },
     },
   },
   exposed: {
