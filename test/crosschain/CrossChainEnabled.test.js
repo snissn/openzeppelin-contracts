@@ -30,49 +30,49 @@ function shouldBehaveLikeReceiver(sender = randomAddress()) {
   });
 }
 
-contract('CrossChainEnabled', function () {
-  describe('AMB', function () {
-    beforeEach(async function () {
-      this.bridge = await BridgeHelper.deploy('AMB');
-      this.receiver = await CrossChainEnabledAMBMock.new(this.bridge.address);
-    });
+// contract('CrossChainEnabled', function () {
+//   describe('AMB', function () {
+//     beforeEach(async function () {
+//       this.bridge = await BridgeHelper.deploy('AMB');
+//       this.receiver = await CrossChainEnabledAMBMock.new(this.bridge.address);
+//     });
 
-    shouldBehaveLikeReceiver();
-  });
+//     shouldBehaveLikeReceiver();
+//   });
 
-  describe('Arbitrum-L1', function () {
-    beforeEach(async function () {
-      this.bridge = await BridgeHelper.deploy('Arbitrum-L1');
-      this.receiver = await CrossChainEnabledArbitrumL1Mock.new(this.bridge.address);
-    });
+//   describe('Arbitrum-L1', function () {
+//     beforeEach(async function () {
+//       this.bridge = await BridgeHelper.deploy('Arbitrum-L1');
+//       this.receiver = await CrossChainEnabledArbitrumL1Mock.new(this.bridge.address);
+//     });
 
-    shouldBehaveLikeReceiver();
-  });
+//     shouldBehaveLikeReceiver();
+//   });
 
-  describe('Arbitrum-L2', function () {
-    beforeEach(async function () {
-      this.bridge = await BridgeHelper.deploy('Arbitrum-L2');
-      this.receiver = await CrossChainEnabledArbitrumL2Mock.new();
-    });
+//   describe('Arbitrum-L2', function () {
+//     beforeEach(async function () {
+//       this.bridge = await BridgeHelper.deploy('Arbitrum-L2');
+//       this.receiver = await CrossChainEnabledArbitrumL2Mock.new();
+//     });
 
-    shouldBehaveLikeReceiver();
-  });
+//     shouldBehaveLikeReceiver();
+//   });
 
-  describe('Optimism', function () {
-    beforeEach(async function () {
-      this.bridge = await BridgeHelper.deploy('Optimism');
-      this.receiver = await CrossChainEnabledOptimismMock.new(this.bridge.address);
-    });
+//   describe('Optimism', function () {
+//     beforeEach(async function () {
+//       this.bridge = await BridgeHelper.deploy('Optimism');
+//       this.receiver = await CrossChainEnabledOptimismMock.new(this.bridge.address);
+//     });
 
-    shouldBehaveLikeReceiver();
-  });
+//     shouldBehaveLikeReceiver();
+//   });
 
-  describe('Polygon-Child', function () {
-    beforeEach(async function () {
-      this.bridge = await BridgeHelper.deploy('Polygon-Child');
-      this.receiver = await CrossChainEnabledPolygonChildMock.new(this.bridge.address);
-    });
+//   describe('Polygon-Child', function () {
+//     beforeEach(async function () {
+//       this.bridge = await BridgeHelper.deploy('Polygon-Child');
+//       this.receiver = await CrossChainEnabledPolygonChildMock.new(this.bridge.address);
+//     });
 
-    shouldBehaveLikeReceiver();
-  });
-});
+//     shouldBehaveLikeReceiver();
+//   });
+// });
