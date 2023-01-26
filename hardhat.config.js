@@ -75,8 +75,8 @@ try {
     return wallet.address;
   });
 
-  nodeUrl = initNode(100);
-  sendFil(accounts, 100);
+  nodeUrl = initNode(1000);
+  sendFil(accounts, 1000);
 } catch (e) {
   console.log(e);
   nodeUrl = '';
