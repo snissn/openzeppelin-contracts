@@ -109,7 +109,7 @@ module.exports = {
       allowUnlimitedContractSize: !withOptimizations,
     },
     itest: {
-      url: nodeUrl + '/rpc/v0',
+      url: nodeUrl + '/rpc/v1',
       accounts: {
         mnemonic: MNEMONIC,
         initialIndex: 0,
