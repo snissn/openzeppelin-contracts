@@ -51,8 +51,15 @@ const argv = require('yargs/yargs')()
 require('@nomiclabs/hardhat-truffle5');
 require('hardhat-ignore-warnings');
 require('hardhat-exposed');
+require('hardhat-gas-reporter');
 
 require('solidity-docgen');
+
+const filename = './node_modules/@openzeppelin/test-helpers/src/expectRevert.js'
+const expectRevert = fs.readFileSync('./node_modules/@openzeppelin/test-helpers/src/expectRevert.js')
+  .toString()
+  .replace(`expect(actualError).to.equal(expectedError, 'Wrong kind of exception received');`, '');
+fs.writeFileSync(filename, expectRevert);
 
 for (const f of fs.readdirSync(path.join(__dirname, 'hardhat'))) {
   require(path.join(__dirname, 'hardhat', f));
@@ -125,17 +132,15 @@ module.exports = {
     ],
   },
   docgen: require('./docs/config'),
-};
-
-if (argv.gas) {
-  require('hardhat-gas-reporter');
-  module.exports.gasReporter = {
+  gasReporter: {
     showMethodSig: true,
     currency: 'USD',
-    outputFile: argv.gasReport,
-    coinmarketcap: argv.coinmarketcap,
-  };
-}
+    outputFile: './gas.txt',
+    noColors: true,
+    gasPrice: 1,
+  },
+};
+
 
 if (argv.coverage) {
   require('solidity-coverage');
