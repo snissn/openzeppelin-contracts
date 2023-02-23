@@ -5,6 +5,8 @@
 // - COMPILE_MODE:      production modes enables optimizations (default: development)
 // - COMPILE_VERSION:   compiler version (default: 0.8.9)
 // - COINMARKETCAP:     coinmarkercat api key for USD value in gas report
+//
+const gasOutputFile = process.argv.includes('hardhat') ? './gasreport/gas.eth.txt' : './gasreport/gas.fil.txt';
 
 const fs = require('fs');
 const path = require('path');
@@ -135,9 +137,10 @@ module.exports = {
   gasReporter: {
     showMethodSig: true,
     currency: 'USD',
-    outputFile: './gas.txt',
+    outputFile: gasOutputFile,
     noColors: true,
     gasPrice: 1,
+    blockLimit: 10000000000,
   },
 };
 
