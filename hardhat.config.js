@@ -91,6 +91,7 @@ try {
   nodeUrl = '';
 }
 
+console.log("nodeUrl ", nodeUrl)
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
@@ -118,7 +119,7 @@ module.exports = {
       allowUnlimitedContractSize: !withOptimizations,
     },
     itest: {
-      url: nodeUrl + '/rpc/v1',
+      url: nodeUrl,
       accounts: {
         mnemonic: MNEMONIC,
         initialIndex: 0,
