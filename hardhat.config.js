@@ -72,20 +72,11 @@ const withOptimizations = argv.gas || argv.compileMode === 'production';
 require('dotenv').config();
 
 const { ethers } = require('ethers');
-const MNEMONIC = ethers.Wallet.createRandom().mnemonic;
-const derivationPath = "m/44'/60'/0'/0'";
 
 var nodeUrl;
 try {
   const { initNode, sendFil } = require('../../kit');
-
-  const accounts = Array.from(Array(20).keys()).map(index => {
-    const wallet = ethers.Wallet.fromMnemonic(MNEMONIC, derivationPath + '/' + index);
-    return wallet.address;
-  });
-
   nodeUrl = initNode(1000);
-  sendFil(accounts, 1000);
 } catch (e) {
   console.log(e);
   nodeUrl = '';
