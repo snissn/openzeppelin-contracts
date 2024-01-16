@@ -120,11 +120,7 @@ module.exports = {
     },
     itest: {
       url: nodeUrl,
-      accounts: {
-        mnemonic: MNEMONIC,
-        initialIndex: 0,
-        path: derivationPath,
-      },
+      accounts: [process.env.DEPLOYER_PRIVATE_KEY, process.env.USER_1_PRIVATE_KEY],
     },
   },
   exposed: {
