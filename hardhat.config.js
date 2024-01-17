@@ -104,6 +104,7 @@ module.exports = {
       default: 'error',
     },
   },
+  defaultNetwork: "itest",
   networks: {
     hardhat: {
       blockGasLimit: 10000000,

@@ -1,3 +1,4 @@
+/*
 extendEnvironment(env => {
   const { contract } = env;
 
@@ -8,3 +9,4 @@ extendEnvironment(env => {
     contract(name, accounts => body(accounts.slice(1)));
   };
 });
+*/
