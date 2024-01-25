@@ -112,7 +112,7 @@ module.exports = {
     },
     itest: {
       url: nodeUrl,
-      accounts: [process.env.DEPLOYER_PRIVATE_KEY, process.env.USER_1_PRIVATE_KEY],
+      accounts: [process.env.USER_1_PRIVATE_KEY, process.env.USER_2_PRIVATE_KEY, process.env.USER_3_PRIVATE_KEY, process.env.USER_4_PRIVATE_KEY, ],
     },
   },
   exposed: {
